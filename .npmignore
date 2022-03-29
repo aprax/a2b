@@ -1,0 +1,11 @@
+.eslintrc.js
+.prettierignore
+.prettierrc.json
+jest.config.js
+src/
+tsconfig.json
+webpack.config.js
+yarn.lock
+coverage
+README.md
+LICENCE
