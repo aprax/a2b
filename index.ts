@@ -1,4 +1,4 @@
-import printNodes from './src/printNodes';
+import printNodes from "./src/printNodes";
 // const assert = require('assert').strict;
 // const colors = require('colors');
 
@@ -13,4 +13,4 @@ printNodes([1, 2, 3, 4, 5, 6, 7]);
 printNodes([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 printNodes([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 1]);
 printNodes([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 1, 2, 3, 4, 5, 6, 7]);
-console.info('End of program');
+console.info("End of program");
