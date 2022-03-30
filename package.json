@@ -1,12 +1,13 @@
 {
   "name": "array-to-ascii-tree",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A CLI tool for visualizing binary trees",
   "main": "dist/index.js",
   "bin": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "start": "tsc && node dist/index.js",
-    "build": "tsc",
+    "start": "rm -rf dist && tsc && node dist/index.js",
+    "build": "rm -rf dist && tsc",
     "lint": "yarn prettier --write . && yarn eslint src --fix",
     "test": "yarn jest --coverage"
   },
@@ -17,6 +18,7 @@
   "author": "Adam Prax",
   "license": "MIT",
   "devDependencies": {
+    "@tsconfig/node16-strictest": "^1.0.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
@@ -28,7 +30,10 @@
     "jest": "^27.5.1",
     "prettier": "^2.6.1",
     "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "meow": "^10.1.2"
+  }
 }
