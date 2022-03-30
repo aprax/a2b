@@ -1,4 +1,4 @@
-import printNodes from "./src/printNodes";
+import printNodes from "./printNodes";
 // const assert = require('assert').strict;
 // const colors = require('colors');
 

@@ -1,12 +1,12 @@
 {
   "name": "array-to-ascii-tree",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A CLI tool for visualizing binary trees",
   "main": "dist/index.js",
   "bin": "dist/index.js",
   "scripts": {
-    "start": "tsc && node dist/index.js",
-    "build": "tsc",
+    "start": "rm -rf dist && tsc && node dist/index.js",
+    "build": "rm -rf dist && tsc",
     "lint": "yarn prettier --write . && yarn eslint src --fix",
     "test": "yarn jest --coverage"
   },

@@ -51,11 +51,11 @@ const printNodes = (numbers: number[]) => {
   numbersIndexToPosition[0] = [0, colPos];
   for (let x = 1; x < numbers.length; x++) {
     const parentIndex = Math.floor((x - 1) / 2);
-    const parentPos = numbersIndexToPosition[parentIndex]; // Verify
+    const parentPos = numbersIndexToPosition[parentIndex];
 
     const rowLevel = Math.floor(Math.log2(x + 1));
 
-    const parentBranchCount = Math.pow(2, Math.floor(height - rowLevel + 1)); // Verify
+    const parentBranchCount = Math.pow(2, Math.floor(height - rowLevel + 1));
     const isLeft = (x - 1) % 2 === 0;
 
     const rowPosition = parentPos[0] + parentBranchCount + 1;
@@ -66,13 +66,13 @@ const printNodes = (numbers: number[]) => {
 
     output[rowPosition][colPosition] = isLeft
       ? numbers[x]
-          .toString()
-          .padStart(Math.ceil(cellLength / 2))
-          .padEnd(cellLength)
+        .toString()
+        .padStart(Math.ceil(cellLength / 2))
+        .padEnd(cellLength)
       : numbers[x]
-          .toString()
-          .padEnd(Math.ceil(cellLength))
-          .padStart(Math.ceil(cellLength));
+        .toString()
+        .padEnd(Math.ceil(cellLength))
+        .padStart(Math.ceil(cellLength));
     numbersIndexToPosition[x] = [rowPosition, colPosition];
 
     if (2 * x + 1 < numbers.length) {
