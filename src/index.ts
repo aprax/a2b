@@ -1,6 +1,6 @@
 #!/usr/bin/env/node
-import meow from 'meow';
-import printNodes from './printNodes/index.js'
+import meow from "meow";
+import printNodes from "./printNodes/index.js";
 // const colors = require('colors');
 
 console.log(Date());
@@ -35,8 +35,8 @@ printNodes([
 ]);
 */
 
-
-const { input, flags } = meow(`
+const { input, flags } = meow(
+  `
 	Usage
 	  $ array-to-ascii-tree <json_array>
 
@@ -49,16 +49,18 @@ const { input, flags } = meow(`
        /   \
       /     \
      2       3
-`, {
-  importMeta: import.meta,
-  flags: {
-    file: {
-      type: 'boolean',
-      alias: 'j'
-    }
+`,
+  {
+    importMeta: import.meta,
+    flags: {
+      file: {
+        type: "boolean",
+        alias: "j",
+      },
+    },
   }
-});
+);
 
 console.log(input[0]);
-printNodes([], flags)
+printNodes([], flags);
 console.info("End of program");

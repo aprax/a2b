@@ -6,7 +6,7 @@
   "bin": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "rm -rf dist && tsc && node dist/index.mjs",
+    "start": "rm -rf dist && tsc && node dist/index.js",
     "build": "rm -rf dist && tsc",
     "lint": "yarn prettier --write . && yarn eslint src --fix",
     "test": "yarn jest --coverage"

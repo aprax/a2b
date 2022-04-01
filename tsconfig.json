@@ -9,11 +9,7 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": true
   },
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts"]
 }
