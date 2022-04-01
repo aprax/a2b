@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "target": "es2016",
-    "module": "commonjs",
+    "target": "es2019",
+    "module": "ES2020",
     "rootDir": "./src",
-    // "moduleResolution": "node",
+    "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "./dist",
     "esModuleInterop": true,
@@ -13,6 +13,7 @@
   },
   "exclude": [
     "node_modules",
+    "jest.config.ts",
     "**/*.spec.ts"
   ]
 }

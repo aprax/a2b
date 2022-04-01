@@ -1,10 +1,14 @@
-const insertInCenter = (cell: string) => {
-  return false;
-};
+import { TypedFlags } from "meow";
 
-const printNodes = (numbers: number[]) => {
+const printNodes = (numbers: number[], flags?: TypedFlags<{
+  file: {
+    type: "boolean";
+    alias: string;
+  };
+}> & Record<string, unknown>) => {
+  console.log(flags);
   if (numbers.length < 1) {
-    return console.log("---No arguments passed---");
+    return console.error("---No arguments passed---");
   }
 
   if (numbers.length === 1) {
@@ -33,7 +37,8 @@ const printNodes = (numbers: number[]) => {
   const colPos = Math.floor(branchWidth / 2);
   const branchCount = Math.pow(2, height);
 
-  output[0][colPos] = numbers[0]
+  const root = numbers[0] || 0;
+  output[0][colPos] = root
     .toString()
     .padStart(Math.ceil(cellLength / 2))
     .padEnd(cellLength);
@@ -64,12 +69,16 @@ const printNodes = (numbers: number[]) => {
       ? parentPos[1] - parentBranchCount - 1
       : parentPos[1] + parentBranchCount + 1;
 
+    if (!numbers[x]) {
+      numbers[x] = 0;
+    }
+    const value = numbers[x] || 0
     output[rowPosition][colPosition] = isLeft
-      ? numbers[x]
+      ? value
         .toString()
         .padStart(Math.ceil(cellLength / 2))
         .padEnd(cellLength)
-      : numbers[x]
+      : value
         .toString()
         .padEnd(Math.ceil(cellLength))
         .padStart(Math.ceil(cellLength));

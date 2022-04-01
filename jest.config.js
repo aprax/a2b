@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   preset: "ts-jest",
   coveragePathIgnorePatterns: ["/node_modules/", "/dist"],
   coverageThreshold: {
@@ -10,3 +10,5 @@ module.exports = {
     },
   },
 };
+
+export default config
