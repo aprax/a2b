@@ -1,4 +1,4 @@
-import { TypedFlags } from "meow";
+import type { TypedFlags } from "meow";
 
 const printNodes = (
   numbers: number[],
@@ -79,13 +79,13 @@ const printNodes = (
     const value = numbers[x] || 0;
     output[rowPosition][colPosition] = isLeft
       ? value
-          .toString()
-          .padStart(Math.ceil(cellLength / 2))
-          .padEnd(cellLength)
+        .toString()
+        .padStart(Math.ceil(cellLength / 2))
+        .padEnd(cellLength)
       : value
-          .toString()
-          .padEnd(Math.ceil(cellLength))
-          .padStart(Math.ceil(cellLength));
+        .toString()
+        .padEnd(Math.ceil(cellLength))
+        .padStart(Math.ceil(cellLength));
     numbersIndexToPosition[x] = [rowPosition, colPosition];
 
     if (2 * x + 1 < numbers.length) {
