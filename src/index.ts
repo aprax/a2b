@@ -61,6 +61,6 @@ const { input, flags } = meow(
   }
 );
 
-console.log(JSON.parse(input[0]));
+console.log(JSON.parse(input[0] || "[]"));
 printNodes([], flags);
 console.info("End of program");

@@ -10,9 +10,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "lib": [
-      "es2021"
-    ],
+    "lib": ["es2021"],
     "skipLibCheck": true,
     "alwaysStrict": true,
     "allowUnusedLabels": false,
@@ -25,11 +23,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "importsNotUsedAsValues": "error",
+    "importsNotUsedAsValues": "error"
   },
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts"]
 }

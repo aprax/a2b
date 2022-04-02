@@ -3,8 +3,8 @@ const config = {
   coveragePathIgnorePatterns: ["/node_modules/", "/dist"],
   coverageThreshold: {
     global: {
-      branches: 60,
-      functions: 50,
+      branches: 75,
+      functions: 90,
       lines: 90,
       statements: 90,
     },
