@@ -8,11 +8,11 @@ Shows an ascii tree in the terminal or outputs to JSON when given an array repre
 npm install a2b
 ```
 
-or 
+or
+
 ```
 yarn add a2b
 ```
-
 
 ## Usage
 

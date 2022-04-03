@@ -5,7 +5,6 @@
     "module": "ES2020",
     "rootDir": "./src",
     "moduleResolution": "node",
-    "sourceMap": true,
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -23,7 +22,8 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "importsNotUsedAsValues": "error"
+    "importsNotUsedAsValues": "error",
+    "inlineSourceMap": true
   },
   "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts"]
 }

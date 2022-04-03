@@ -1,8 +1,24 @@
 #!/usr/bin/env/node
 import meow from "meow";
 import printNodes from "./printNodes/index.js";
-import toConsole from "./toConsole";
+import toConsole from "./toConsole/index.js";
 // const colors = require('colors');
+
+/*
+const MAX_LEVEL = 4; //Currently does not work for MAX_LEVEL >= 4
+for (let x = MAX_LEVEL; x >= 0; x--) {
+  const totalNodes = Math.pow(2, MAX_LEVEL - x) - 1;
+  const numbers = Array(totalNodes);
+  for (let y = 1; y <= totalNodes; y++) {
+    numbers[y - 1] = y;
+  }
+
+  const actual = printNodes(numbers);
+
+  toConsole(actual);
+  console.log('')
+}
+*/
 
 const usage = `
 Usage
@@ -19,6 +35,7 @@ Examples
   2       3
 
 `;
+
 const { input, flags } = meow(usage, {
   importMeta: import.meta,
   flags: {

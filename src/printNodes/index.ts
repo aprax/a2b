@@ -1,4 +1,7 @@
-const printNodes: (nodes: Object[]) => string[][] | null = (nodes) => {
+const printNodes: (nodes: Object[]) => string[][] = (nodes) => {
+  if (nodes.length <= 1) {
+    return [[]];
+  }
   let cellLength = Math.max(...nodes.map((node) => node.toString().length));
   if (cellLength % 2 === 0) {
     cellLength++;

@@ -1,3 +1,5 @@
 .eslintrc.js
 *.json
 *.md
+.vscode
+.github
