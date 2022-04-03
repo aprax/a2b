@@ -1,17 +1,18 @@
 #!/usr/bin/env/node
 import meow from "meow";
 import printNodes from "./printNodes/index.js";
+import toConsole from "./toConsole";
 // const colors = require('colors');
 
 const usage = `
 Usage
-  $ array-to-ascii-tree <json_array>
+  $ a2b <json_array>
 
 Options
   --json, -j  Output tree to JSON string
 
 Examples
-  $ array-to-ascii-tree [1,2,3]
+  $ a2b [1,2,3]
       1
     /   \\
    /     \\
@@ -40,8 +41,6 @@ if (!output) {
 if (flags.json) {
   process.stdout.write(JSON.stringify(output));
 } else {
-  for (const row of output) {
-    console.log(row.join(""));
-  }
+  toConsole(output);
 }
 process.exit(0);

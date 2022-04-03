@@ -1,4 +1,4 @@
-import printNodes from ".";
+import printNodes from "..";
 
 const message = "should match the expected structure for ";
 it(`${message} [1, 2, 30000000000000, 205, 5, 14, 7, 5, 4, 9, 2]`, () =>
