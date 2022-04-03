@@ -10,5 +10,6 @@ module.exports = {
   ],
   rules: {
     "max-len": 1,
+    "@typescript-eslint/ban-types": 0,
   },
 };

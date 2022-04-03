@@ -1,6 +1,4 @@
-const printNodes: (
-  numbers: number[] | string[]
-) => string[][] | number[][] | null = (numbers) => {
+const printNodes: (nodes: Object[]) => string[][] | null = (numbers) => {
   let cellLength = Math.max(
     ...numbers.map((number) => number.toString().length)
   );
@@ -60,9 +58,6 @@ const printNodes: (
       ? parentPos[1] - parentBranchCount - 1
       : parentPos[1] + parentBranchCount + 1;
 
-    if (!numbers[x]) {
-      numbers[x] = 0;
-    }
     const value = numbers[x] || 0;
     output[rowPosition]![colPosition] = isLeft
       ? value
