@@ -1,8 +1,17 @@
-const printNodes: (nodes: Object[]) => string[][] = (nodes) => {
+import isValidBinaryTree from "../isValidBinaryTree/index.js";
+
+export const invalidErrorMessage = "Invalid Binary Tree";
+
+const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
+  if (!isValidBinaryTree(nodes)) {
+    throw new Error(invalidErrorMessage);
+  }
   if (nodes.length <= 1) {
     return [[]];
   }
-  let cellLength = Math.max(...nodes.map((node) => node.toString().length));
+  let cellLength = Math.max(
+    ...nodes.map((node) => (node ? node.toString().length : 0))
+  );
   if (cellLength % 2 === 0) {
     cellLength++;
   }
@@ -59,7 +68,8 @@ const printNodes: (nodes: Object[]) => string[][] = (nodes) => {
       ? parentPos[1] - parentBranchCount - 1
       : parentPos[1] + parentBranchCount + 1;
 
-    const value = nodes[x] || 0;
+    const value = nodes[x];
+    if (!value) continue;
     output[rowPosition]![colPosition] = isLeft
       ? value
           .toString()
