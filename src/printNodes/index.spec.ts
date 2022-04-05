@@ -1,7 +1,7 @@
-import printNodes from ".";
+import printNodes, { invalidErrorMessage } from ".";
 
 const message = "match snapshot for  ";
-const MAX_LEVEL = 4; // Currently does not work for MAX_LEVEL >= 4
+const MAX_LEVEL = 4;
 
 for (let length = 1; length <= Math.pow(2, MAX_LEVEL); length++) {
   const numbers = Array(length);
@@ -13,3 +13,13 @@ for (let length = 1; length <= Math.pow(2, MAX_LEVEL); length++) {
     expect(actual).toMatchSnapshot();
   });
 }
+
+let array = [null, 1];
+it(`should throw with invalid ${array}`, () => {
+  expect(() => printNodes(array)).toThrow(invalidErrorMessage);
+});
+
+array = [1, null, 3, 4, 5, 6];
+it(`should fail with ${JSON.stringify(array)}`, () => {
+  expect(() => printNodes(array)).toThrow(invalidErrorMessage);
+});
