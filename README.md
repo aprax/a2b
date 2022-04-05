@@ -1,3 +1,46 @@
-# array-to-ascii-tree
+# a2b
 
-A command line tool that takes in an JSON formatted array and displays the resulting tree in the terminal.
+Shows an ascii tree in the terminal or outputs to JSON when given an array representing a binary tree.
+
+## Install
+
+```
+npm install a2b
+```
+
+or
+
+```
+yarn add a2b
+```
+
+## Usage
+
+```
+  $ a2b <json_array>
+```
+
+## Options
+
+```
+  --json, -j  Output tree to JSON string
+```
+
+## Examples
+
+```
+$ a2b [1,2,3]
+    1
+  /   \\
+ /     \\
+2       3
+
+```
+
+## Build and Run
+
+Builds and compiles to dist/
+
+```
+yarn build
+```

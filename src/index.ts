@@ -1,23 +1,51 @@
-#!/usr/bin/env/node
-import meow from "meow";
+#!/usr/bin/env node
+// import meow from "meow";
 import printNodes from "./printNodes/index.js";
+import toConsole from "./toConsole/index.js";
 // const colors = require('colors');
 
+const MAX_LEVEL = 7; // Currently does not work for MAX_LEVEL >= 4
+/*
+for (let x = MAX_LEVEL; x >= 0; x--) {
+  const totalNodes = Math.pow(2, MAX_LEVEL - x) ;
+  const numbers = Array(totalNodes);
+  for (let y = 1; y <= totalNodes; y++) {
+    numbers[y - 1] = y;
+  }
+
+  const actual = printNodes(numbers);
+
+  toConsole(actual);
+  console.log('')
+}
+*/
+for (let length = 1; length <= Math.pow(2, MAX_LEVEL); length++) {
+  const numbers = Array(length);
+  for (let y = 0; y <= numbers.length; y++) {
+    numbers[y - 1] = y;
+  }
+  const actual = printNodes(numbers);
+  toConsole(actual);
+  console.log("");
+}
+
+/*
 const usage = `
 Usage
-  $ array-to-ascii-tree <json_array>
+  $ a2b <json_array>
 
 Options
   --json, -j  Output tree to JSON string
 
 Examples
-  $ array-to-ascii-tree [1,2,3]
+  $ a2b [1,2,3]
       1
     /   \\
    /     \\
   2       3
 
 `;
+
 const { input, flags } = meow(usage, {
   importMeta: import.meta,
   flags: {
@@ -40,8 +68,7 @@ if (!output) {
 if (flags.json) {
   process.stdout.write(JSON.stringify(output));
 } else {
-  for (const row of output) {
-    console.log(row.join(""));
-  }
+  toConsole(output);
 }
 process.exit(0);
+*/

@@ -1,12 +1,13 @@
-const printNodes: (nodes: Object[]) => string[][] | null = (numbers) => {
-  let cellLength = Math.max(
-    ...numbers.map((number) => number.toString().length)
-  );
+const printNodes: (nodes: Object[]) => string[][] = (nodes) => {
+  if (nodes.length <= 1) {
+    return [[]];
+  }
+  let cellLength = Math.max(...nodes.map((node) => node.toString().length));
   if (cellLength % 2 === 0) {
     cellLength++;
   }
 
-  const height = Math.floor(Math.log2(numbers.length));
+  const height = Math.floor(Math.log2(nodes.length)) + 1;
 
   let branchHeight = 1; // This is the last child in the tree
   // Each iteration is the branches from the root and then the last child child
@@ -26,7 +27,7 @@ const printNodes: (nodes: Object[]) => string[][] | null = (numbers) => {
   const colPos = Math.floor(branchWidth / 2);
   const branchCount = Math.pow(2, height);
 
-  const root = numbers[0] || 0;
+  const root = nodes[0] || 0;
   output[0]![colPos] = root
     .toString()
     .padStart(Math.ceil(cellLength / 2))
@@ -41,9 +42,9 @@ const printNodes: (nodes: Object[]) => string[][] | null = (numbers) => {
       .padStart(cellLength);
   }
 
-  const numbersIndexToPosition = Array(numbers.length);
+  const numbersIndexToPosition = Array(nodes.length);
   numbersIndexToPosition[0] = [0, colPos];
-  for (let x = 1; x < numbers.length; x++) {
+  for (let x = 1; x < nodes.length; x++) {
     const parentIndex = Math.floor((x - 1) / 2);
     const parentPos = numbersIndexToPosition[parentIndex];
 
@@ -58,7 +59,7 @@ const printNodes: (nodes: Object[]) => string[][] | null = (numbers) => {
       ? parentPos[1] - parentBranchCount - 1
       : parentPos[1] + parentBranchCount + 1;
 
-    const value = numbers[x] || 0;
+    const value = nodes[x] || 0;
     output[rowPosition]![colPosition] = isLeft
       ? value
           .toString()
@@ -70,7 +71,7 @@ const printNodes: (nodes: Object[]) => string[][] | null = (numbers) => {
           .padStart(Math.ceil(cellLength));
     numbersIndexToPosition[x] = [rowPosition, colPosition];
 
-    if (2 * x + 1 < numbers.length) {
+    if (2 * x + 1 < nodes.length) {
       const branchCount = Math.pow(2, height - rowLevel);
       for (let y = rowPosition + 1; y <= rowPosition + branchCount; y++) {
         output[y]![colPosition - y + rowPosition] = "/"
