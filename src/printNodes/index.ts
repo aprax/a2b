@@ -7,7 +7,7 @@ const printNodes: (nodes: Object[]) => string[][] = (nodes) => {
     cellLength++;
   }
 
-  const height = Math.floor(Math.log2(nodes.length));
+  const height = Math.floor(Math.log2(nodes.length)) + 1;
 
   let branchHeight = 1; // This is the last child in the tree
   // Each iteration is the branches from the root and then the last child child

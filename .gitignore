@@ -4,3 +4,4 @@ node_modules
 index.js.map
 index.js
 dist
+.DS_store

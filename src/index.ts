@@ -1,13 +1,13 @@
-#!/usr/bin/env/node
-import meow from "meow";
+#!/usr/bin/env node
+// import meow from "meow";
 import printNodes from "./printNodes/index.js";
 import toConsole from "./toConsole/index.js";
 // const colors = require('colors');
 
+const MAX_LEVEL = 7; // Currently does not work for MAX_LEVEL >= 4
 /*
-const MAX_LEVEL = 4; //Currently does not work for MAX_LEVEL >= 4
 for (let x = MAX_LEVEL; x >= 0; x--) {
-  const totalNodes = Math.pow(2, MAX_LEVEL - x) - 1;
+  const totalNodes = Math.pow(2, MAX_LEVEL - x) ;
   const numbers = Array(totalNodes);
   for (let y = 1; y <= totalNodes; y++) {
     numbers[y - 1] = y;
@@ -19,7 +19,17 @@ for (let x = MAX_LEVEL; x >= 0; x--) {
   console.log('')
 }
 */
+for (let length = 1; length <= Math.pow(2, MAX_LEVEL); length++) {
+  const numbers = Array(length);
+  for (let y = 0; y <= numbers.length; y++) {
+    numbers[y - 1] = y;
+  }
+  const actual = printNodes(numbers);
+  toConsole(actual);
+  console.log("");
+}
 
+/*
 const usage = `
 Usage
   $ a2b <json_array>
@@ -61,3 +71,4 @@ if (flags.json) {
   toConsole(output);
 }
 process.exit(0);
+*/
