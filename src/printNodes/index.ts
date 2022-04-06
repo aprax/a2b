@@ -43,17 +43,26 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
     .padEnd(cellLength);
 
   for (let y = 1; y <= branchCount; y++) {
-    output[y]![colPos - y] = "/"
-      .padStart(Math.ceil(cellLength / 2))
-      .padEnd(cellLength);
-    output[y]![colPos + y] = "\\"
-      .padEnd(Math.ceil(cellLength / 2))
-      .padStart(cellLength);
+    if (nodes[1]) {
+      output[y]![colPos - y] = "/"
+        .padStart(Math.ceil(cellLength / 2))
+        .padEnd(cellLength);
+    }
+ 
+    if (nodes[2]) {
+      output[y]![colPos + y] = "\\"
+        .padEnd(Math.ceil(cellLength / 2))
+        .padStart(cellLength);
+    }
   }
 
   const numbersIndexToPosition = Array(nodes.length);
   numbersIndexToPosition[0] = [0, colPos];
+
   for (let x = 1; x < nodes.length; x++) {
+    const value = nodes[x];
+    if (!value) continue;
+
     const parentIndex = Math.floor((x - 1) / 2);
     const parentPos = numbersIndexToPosition[parentIndex];
 
@@ -68,8 +77,6 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
       ? parentPos[1] - parentBranchCount - 1
       : parentPos[1] + parentBranchCount + 1;
 
-    const value = nodes[x];
-    if (!value) continue;
     output[rowPosition]![colPosition] = isLeft
       ? value
           .toString()
