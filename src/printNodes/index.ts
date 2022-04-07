@@ -91,12 +91,17 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
     if (2 * x + 1 < nodes.length) {
       const branchCount = Math.pow(2, height - rowLevel);
       for (let y = rowPosition + 1; y <= rowPosition + branchCount; y++) {
-        output[y]![colPosition - y + rowPosition] = "/"
-          .padStart(Math.ceil(cellLength / 2))
-          .padEnd(cellLength);
+        if (output[2*x+1]) {
+          output[y]![colPosition - y + rowPosition] = "/"
+            .padStart(Math.ceil(cellLength / 2))
+            .padEnd(cellLength);
+        }
+        if (output[2*x+2]) {
+
         output[y]![colPosition + y - rowPosition] = "\\"
           .padEnd(Math.ceil(cellLength / 2))
           .padStart(cellLength);
+        }
       }
     }
   }
