@@ -48,7 +48,7 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
         .padStart(Math.ceil(cellLength / 2))
         .padEnd(cellLength);
     }
- 
+
     if (nodes[2]) {
       output[y]![colPos + y] = "\\"
         .padEnd(Math.ceil(cellLength / 2))
