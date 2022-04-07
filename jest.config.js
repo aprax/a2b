@@ -2,13 +2,13 @@ const config = {
   transform: {
     "\\.[jt]sx?$": "ts-jest",
   },
-  "globals": {
+  globals: {
     "ts-jest": {
-      "useESM": true
-    }
+      useESM: true,
+    },
   },
   moduleNameMapper: {
-    "(.+)\\.js": "$1"
+    "(.+)\\.js": "$1",
   },
   extensionsToTreatAsEsm: [".ts"],
 };

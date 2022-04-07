@@ -15,11 +15,13 @@ for (let length = 1; length <= Math.pow(2, MAX_LEVEL); length++) {
 }
 
 let array = [null, 1];
-it(`should throw with invalid ${array}`, () => {
-  expect(() => printNodes(array)).toThrow(invalidErrorMessage);
-});
+((array) =>
+  it(`should throw with invalid ${array}`, () => {
+    expect(() => printNodes(array)).toThrow(invalidErrorMessage);
+  }))(array);
 
 array = [1, null, 3, 4, 5, 6];
-it(`should fail with ${JSON.stringify(array)}`, () => {
-  expect(() => printNodes(array)).toThrow(invalidErrorMessage);
-});
+((array) =>
+  it(`should fail with ${JSON.stringify(array)}`, () => {
+    expect(() => printNodes(array)).toThrow(invalidErrorMessage);
+  }))(array);
