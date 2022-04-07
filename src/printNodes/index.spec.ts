@@ -24,10 +24,3 @@ array = [1, null, 3, 4, 5, 6];
 (array => it(`should fail with ${JSON.stringify(array)}`, () => {
   expect(() => printNodes(array)).toThrow(invalidErrorMessage);
 }))(array);
-
-
-
-
-
-
-
