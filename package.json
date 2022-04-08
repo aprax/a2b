@@ -1,6 +1,6 @@
 {
-  "name": "a2b",
-  "version": "0.0.1",
+  "name": "a2bt",
+  "version": "0.0.2",
   "description": "A CLI tool for visualizing binary trees",
   "main": "dist/index.js",
   "bin": "dist/index.js",

@@ -3,6 +3,10 @@ import meow from "meow";
 import printNodes from "./printNodes/index.js";
 import toConsole from "./toConsole/index.js";
 
+export default printNodes;
+
+export { toConsole };
+
 const usage = `
 Usage
   $ a2b <json_array>
