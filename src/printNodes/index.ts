@@ -28,31 +28,31 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
   const output = Array<string[]>(branchHeight);
 
   for (let x = 0; x < output.length; x++) {
-    output[x] = Array<string>(branchWidth).fill(
-      " ".padEnd(Math.ceil(cellLength))
-    );
+    output[x] = Array<string>(branchWidth).fill(" ");
   }
 
   const colPos = Math.floor(branchWidth / 2);
   const branchCount = Math.pow(2, height);
 
   const root = nodes[0] || 0;
-  output[0]![colPos] = root
-    .toString()
-    .padStart(Math.ceil(cellLength / 2))
-    .padEnd(cellLength);
+
+  const rootString: string = root.toString();
+  let rightSidePos = 0;
+  for (let x = Math.floor(rootString.length / 2); x < rootString.length; x++) {
+    output[0]![colPos + rightSidePos++] = rootString[x] as string;
+  }
+  let leftSidePos = 1;
+  for (let x = Math.floor(rootString.length / 2) - 1; x >= 0; x--) {
+    output[0]![colPos - leftSidePos++] = rootString[x] as string;
+  }
 
   for (let y = 1; y <= branchCount; y++) {
     if (nodes[1]) {
-      output[y]![colPos - y] = "/"
-        .padStart(Math.ceil(cellLength / 2))
-        .padEnd(cellLength);
+      output[y]![colPos - y] = "/";
     }
 
     if (nodes[2]) {
-      output[y]![colPos + y] = "\\"
-        .padEnd(Math.ceil(cellLength / 2))
-        .padStart(cellLength);
+      output[y]![colPos + y] = "\\";
     }
   }
 
@@ -77,29 +77,32 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
       ? parentPos[1] - parentBranchCount - 1
       : parentPos[1] + parentBranchCount + 1;
 
-    output[rowPosition]![colPosition] = isLeft
-      ? value
-          .toString()
-          .padStart(Math.ceil(cellLength / 2))
-          .padEnd(cellLength)
-      : value
-          .toString()
-          .padEnd(Math.ceil(cellLength))
-          .padStart(Math.ceil(cellLength));
+    let rightSidePos = 0;
+
+    const nodeString = value.toString();
+    const midPoint = Math.floor(nodeString.length / 2);
+    for (let x = midPoint; x < nodeString.length; x++) {
+      output[rowPosition]![colPosition + rightSidePos++] = nodeString[
+        x
+      ] as string;
+    }
+    let leftSidePos = 1;
+    for (let x = midPoint - 1; x >= 0; x--) {
+      output[rowPosition]![colPosition - leftSidePos++] = nodeString[
+        x
+      ] as string;
+    }
+
     numbersIndexToPosition[x] = [rowPosition, colPosition];
 
     if (2 * x + 1 < nodes.length) {
       const branchCount = Math.pow(2, height - rowLevel);
       for (let y = rowPosition + 1; y <= rowPosition + branchCount; y++) {
         if (nodes[2 * x + 1]) {
-          output[y]![colPosition - y + rowPosition] = "/"
-            .padStart(Math.ceil(cellLength / 2))
-            .padEnd(cellLength);
+          output[y]![colPosition - y + rowPosition] = "/";
         }
         if (nodes[2 * x + 2]) {
-          output[y]![colPosition + y - rowPosition] = "\\"
-            .padEnd(Math.ceil(cellLength / 2))
-            .padStart(cellLength);
+          output[y]![colPosition + y - rowPosition] = "\\";
         }
       }
     }

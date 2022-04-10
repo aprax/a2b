@@ -35,8 +35,7 @@ const { input, flags } = meow(usage, {
 
 const parsedInput: string[] = JSON.parse(input[0] || "[]");
 if (parsedInput?.length <= 1 ?? true) {
-  console.error("---Array must be greater than a length of 1---");
-  process.exit(1);
+  throw Error("---Array must be greater than a length of 1---");
 }
 const output = printNodes(parsedInput);
 if (!output) {
