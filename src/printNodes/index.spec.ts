@@ -1,16 +1,20 @@
 import printNodes, { invalidErrorMessage } from ".";
 
 const message = "match snapshot for  ";
-const MAX_LEVEL = 4;
+const MAX_LEVEL = 5;
 
-for (let length = 1; length <= Math.pow(2, MAX_LEVEL); length++) {
-  const numbers = Array(length);
-  for (let y = 0; y <= numbers.length; y++) {
+for (let x = 1; x <= MAX_LEVEL; x++) {
+  const numbers = Array(Math.pow(2, x + 1) - 1);
+  for (let y = 1; y <= numbers.length; y++) {
     numbers[y - 1] = y;
   }
   it(`${message} ${JSON.stringify(numbers)}`, () => {
     const actual = printNodes(numbers);
     expect(actual).toMatchSnapshot();
+    const grid = printNodes(numbers, 0, true);
+    expect(grid).toMatchSnapshot();
+    const addend = printNodes(numbers, 0, false);
+    expect(addend).toMatchSnapshot();
   });
 }
 
