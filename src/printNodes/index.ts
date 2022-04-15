@@ -1,8 +1,13 @@
 import isValidBinaryTree from "../isValidBinaryTree/index.js";
+import getHeight from "./getHeight.js";
 
 export const invalidErrorMessage = "Invalid Binary Tree";
 
-const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
+const printNodes: (
+  nodes: (Object | null)[],
+  heightAddend?: number,
+  showGrid?: boolean
+) => string[][] = (nodes, heightAddend = 0, showGrid = false) => {
   if (!isValidBinaryTree(nodes)) {
     throw new Error(invalidErrorMessage);
   }
@@ -16,27 +21,53 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
     cellLength++;
   }
 
-  const height = Math.floor(Math.log2(nodes.length)) + 1;
+  let height = Math.floor(Math.log2(nodes.length)) + heightAddend;
 
-  let branchHeight = 1; // This is the last child in the tree
+  let branchCount = Math.pow(2, height);
+
+  const leftChildHeight = getHeight(1, branchCount, nodes, "right");
+  const rightChildHeight = getHeight(1, branchCount, nodes, "left");
+
+  if (leftChildHeight > branchCount + 1 && rightChildHeight > branchCount + 1) {
+    // console.log(`leftChildHeight: ${leftChildHeight}`);
+    // console.log(`rightChildHeight: ${leftChildHeight}`);
+    // console.log(`branchCount: ${branchCount}`);
+    height += 1;
+  }
+
+  branchCount = Math.pow(2, height);
+
+  let branchHeight = 1;
   // Each iteration is the branches from the root and then the last child child
+  // x=0 is the root node
   for (let x = 1; x <= height; x++) {
+    // + 1 is the child at the end of the branch
     branchHeight += Math.pow(2, x) + 1;
   }
+
   const branchWidth = 2 * branchHeight - 1;
+  const colPos = Math.floor(branchWidth / 2);
 
   const output = Array<string[]>(branchHeight);
 
   for (let x = 0; x < output.length; x++) {
-    output[x] = Array<string>(branchWidth).fill(" ");
+    if (showGrid) {
+      output[x] = Array<string>(branchWidth);
+      let counter = 1;
+      for (let y = 0; y < branchWidth; y++) {
+        output[x]![y] = (counter++).toString();
+        if (counter > 9) {
+          counter = 0;
+        }
+      }
+    } else {
+      output[x] = Array<string>(branchWidth).fill(" ");
+    }
   }
-
-  const colPos = Math.floor(branchWidth / 2);
-  const branchCount = Math.pow(2, height);
 
   const root = nodes[0] || 0;
 
-  const rootString: string = root.toString();
+  const rootString = root.toString();
   let rightSidePos = 0;
   for (let x = Math.floor(rootString.length / 2); x < rootString.length; x++) {
     output[0]![colPos + rightSidePos++] = rootString[x] as string;
@@ -60,6 +91,8 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
   numbersIndexToPosition[0] = [0, colPos];
 
   for (let x = 1; x < nodes.length; x++) {
+    const isLeft = (x - 1) % 2 === 0;
+
     const value = nodes[x];
     if (!value) continue;
 
@@ -69,7 +102,6 @@ const printNodes: (nodes: (Object | null)[]) => string[][] = (nodes) => {
     const rowLevel = Math.floor(Math.log2(x + 1));
 
     const parentBranchCount = Math.pow(2, Math.floor(height - rowLevel + 1));
-    const isLeft = (x - 1) % 2 === 0;
 
     const rowPosition = parentPos[0] + parentBranchCount + 1;
 

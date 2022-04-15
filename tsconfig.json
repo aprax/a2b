@@ -27,5 +27,5 @@
     "declaration": true,
     "declarationDir": "./dist"
   },
-  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts"]
+  "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "dist"]
 }
