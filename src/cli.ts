@@ -6,22 +6,28 @@ import toConsole from "./toConsole/index.js";
 
 const usage = `
 Usage
-  $ a2b <json_array>
+  $ a2bt <json_array>
 
+  Use null for empty nodes, e.g. [1,null,2]
 Options
   --json, -j  Output tree to JSON string
   --addend, -a Adds the constant to the height of the tree. Useful for when leaf nodes overlap due to long values.
   --grid, -g show number grid instead of whitespace
-Examples
-  $ a2b [1,2,3]
-      1
-    /   \\
-   /     \\
-  2       3
-
+  --fgColor -f sets the color of the nodes using a ANSI foreground color code (30-37, 90-97) https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+Example
+  $ a2bt [1,2,3, null, 4]
+       1        
+      / \\       
+     /   \\      
+    /     \\     
+   /       \\    
+  2         3   
+   \\            
+    \\           
+     4          
 `;
 
-const { input, flags } = meow(usage, {
+const { input, flags: {json, addend, grid, fgColor} } = meow(usage, {
   importMeta: import.meta,
   flags: {
     json: {
@@ -38,6 +44,10 @@ const { input, flags } = meow(usage, {
       alias: "g",
       default: false,
     },
+    fgColor: {
+      type: "number",
+      alias: "f",
+    }
   },
 });
 
@@ -46,12 +56,12 @@ if (parsedInput?.length <= 1 ?? true) {
   throw Error("---Array must be greater than a length of 1---");
 }
 
-const output = printNodes(parsedInput, flags.addend, flags.grid);
+const output = printNodes(parsedInput, addend, grid, fgColor);
 if (!output) {
   process.exit(1);
 }
 
-if (flags.json) {
+if (json) {
   process.stdout.write(JSON.stringify(output));
 } else {
   toConsole(output);

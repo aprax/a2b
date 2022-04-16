@@ -1,13 +1,19 @@
 import isValidBinaryTree from "../isValidBinaryTree/index.js";
-import getHeight from "./getHeight.js";
+import formatValue from "./formatValue.js";
+import getHeight from "../getHeight/index.js";
 
 export const invalidErrorMessage = "Invalid Binary Tree";
 
 const printNodes: (
   nodes: (Object | null)[],
   heightAddend?: number,
-  showGrid?: boolean
-) => string[][] = (nodes, heightAddend = 0, showGrid = false) => {
+  showGrid?: boolean,
+  fgColor?: number
+) => string[][] = (
+  nodes, 
+  heightAddend = 0, 
+  showGrid = false, 
+  fgColor = undefined) => {
   if (!isValidBinaryTree(nodes)) {
     throw new Error(invalidErrorMessage);
   }
@@ -26,12 +32,10 @@ const printNodes: (
   let branchCount = Math.pow(2, height);
 
   const leftChildHeight = getHeight(1, branchCount, nodes, "right");
-  const rightChildHeight = getHeight(1, branchCount, nodes, "left");
+  const rightChildHeight = getHeight(2, branchCount, nodes, "left");
 
-  if (leftChildHeight > branchCount + 1 && rightChildHeight > branchCount + 1) {
-    // console.log(`leftChildHeight: ${leftChildHeight}`);
-    // console.log(`rightChildHeight: ${leftChildHeight}`);
-    // console.log(`branchCount: ${branchCount}`);
+  if (leftChildHeight > branchCount 
+    && rightChildHeight > branchCount) {
     height += 1;
   }
 
@@ -70,11 +74,11 @@ const printNodes: (
   const rootString = root.toString();
   let rightSidePos = 0;
   for (let x = Math.floor(rootString.length / 2); x < rootString.length; x++) {
-    output[0]![colPos + rightSidePos++] = rootString[x] as string;
+    output[0]![colPos + rightSidePos++] = formatValue(rootString[x] || ' ', fgColor);
   }
   let leftSidePos = 1;
   for (let x = Math.floor(rootString.length / 2) - 1; x >= 0; x--) {
-    output[0]![colPos - leftSidePos++] = rootString[x] as string;
+    output[0]![colPos - leftSidePos++] = formatValue(rootString[x] || ' ', fgColor);
   }
 
   for (let y = 1; y <= branchCount; y++) {
@@ -111,18 +115,14 @@ const printNodes: (
 
     let rightSidePos = 0;
 
-    const nodeString = value.toString();
+    const nodeString = value.toString().trim();
     const midPoint = Math.floor(nodeString.length / 2);
     for (let x = midPoint; x < nodeString.length; x++) {
-      output[rowPosition]![colPosition + rightSidePos++] = nodeString[
-        x
-      ] as string;
+      output[rowPosition]![colPosition + rightSidePos++] = formatValue(nodeString[x] || ' ', fgColor);
     }
     let leftSidePos = 1;
     for (let x = midPoint - 1; x >= 0; x--) {
-      output[rowPosition]![colPosition - leftSidePos++] = nodeString[
-        x
-      ] as string;
+       output[rowPosition]![colPosition - leftSidePos++] = formatValue(nodeString[x] || ' ', fgColor);
     }
 
     numbersIndexToPosition[x] = [rowPosition, colPosition];

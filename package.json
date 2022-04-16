@@ -1,12 +1,12 @@
 {
   "name": "a2bt",
-  "version": "0.0.3",
+  "version": "1.0.0-0",
   "description": "A CLI tool and node library for visualizing binary trees",
   "main": "dist/index.js",
   "bin": "dist/cli.js",
   "type": "module",
   "scripts": {
-    "start": "rm -rf dist && tsc && node dist/index.js",
+    "start": "rm -rf dist && tsc && node dist/cli.js",
     "build": "rm -rf dist && tsc",
     "lint": "yarn prettier --write . && yarn eslint src --fix",
     "test": "yarn jest --coverage"
