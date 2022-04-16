@@ -10,10 +10,11 @@ const printNodes: (
   showGrid?: boolean,
   fgColor?: number
 ) => string[][] = (
-  nodes, 
-  heightAddend = 0, 
-  showGrid = false, 
-  fgColor = undefined) => {
+  nodes,
+  heightAddend = 0,
+  showGrid = false,
+  fgColor = undefined
+) => {
   if (!isValidBinaryTree(nodes)) {
     throw new Error(invalidErrorMessage);
   }
@@ -34,8 +35,7 @@ const printNodes: (
   const leftChildHeight = getHeight(1, branchCount, nodes, "right");
   const rightChildHeight = getHeight(2, branchCount, nodes, "left");
 
-  if (leftChildHeight > branchCount 
-    && rightChildHeight > branchCount) {
+  if (leftChildHeight > branchCount && rightChildHeight > branchCount) {
     height += 1;
   }
 
@@ -74,11 +74,17 @@ const printNodes: (
   const rootString = root.toString();
   let rightSidePos = 0;
   for (let x = Math.floor(rootString.length / 2); x < rootString.length; x++) {
-    output[0]![colPos + rightSidePos++] = formatValue(rootString[x] || ' ', fgColor);
+    output[0]![colPos + rightSidePos++] = formatValue(
+      rootString[x] || " ",
+      fgColor
+    );
   }
   let leftSidePos = 1;
   for (let x = Math.floor(rootString.length / 2) - 1; x >= 0; x--) {
-    output[0]![colPos - leftSidePos++] = formatValue(rootString[x] || ' ', fgColor);
+    output[0]![colPos - leftSidePos++] = formatValue(
+      rootString[x] || " ",
+      fgColor
+    );
   }
 
   for (let y = 1; y <= branchCount; y++) {
@@ -118,11 +124,17 @@ const printNodes: (
     const nodeString = value.toString().trim();
     const midPoint = Math.floor(nodeString.length / 2);
     for (let x = midPoint; x < nodeString.length; x++) {
-      output[rowPosition]![colPosition + rightSidePos++] = formatValue(nodeString[x] || ' ', fgColor);
+      output[rowPosition]![colPosition + rightSidePos++] = formatValue(
+        nodeString[x] || " ",
+        fgColor
+      );
     }
     let leftSidePos = 1;
     for (let x = midPoint - 1; x >= 0; x--) {
-       output[rowPosition]![colPosition - leftSidePos++] = formatValue(nodeString[x] || ' ', fgColor);
+      output[rowPosition]![colPosition - leftSidePos++] = formatValue(
+        nodeString[x] || " ",
+        fgColor
+      );
     }
 
     numbersIndexToPosition[x] = [rowPosition, colPosition];
