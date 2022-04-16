@@ -27,7 +27,10 @@ Example
      4          
 `;
 
-const { input, flags: {json, addend, grid, fgColor} } = meow(usage, {
+const {
+  input,
+  flags: { json, addend, grid, fgColor },
+} = meow(usage, {
   importMeta: import.meta,
   flags: {
     json: {
@@ -47,7 +50,7 @@ const { input, flags: {json, addend, grid, fgColor} } = meow(usage, {
     fgColor: {
       type: "number",
       alias: "f",
-    }
+    },
   },
 });
 

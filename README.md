@@ -36,6 +36,7 @@ Use `null` for empty nodes.
   --grid, -g show number grid instead of whitespace
   --fgColor -f A 4bit ANSI color that range from 30-37 and 90-97 inclusive.
 ```
+
 ## API
 
 ```javascript
@@ -47,10 +48,8 @@ const array = ["aaa", "bbb", "ccc"];
 
 toConsole(a2bt(array, addend, grid));
 ```
-See https://github.com/aprax/a2bt_example for more examples 
 
-
-
+See https://github.com/aprax/a2bt_example for more examples
 
 ## Examples
 
@@ -129,8 +128,8 @@ $ a2bt ["@","#","$"] -g
 ```
 
 ## Build
-Builds to `dist/index.js` for API and `dist/cli.js` for CLI.
 
+Builds to `dist/index.js` for API and `dist/cli.js` for CLI.
 
 ```
 yarn build
