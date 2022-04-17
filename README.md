@@ -1,6 +1,6 @@
 # a2bt
 
-Shows an ascii tree in the terminal or outputs to JSON when given an array representing a binary tree.
+Prints an ASCII representation of a binary tree.
 
 ## Install
 
@@ -39,14 +39,37 @@ Use `null` for empty nodes.
 
 ## API
 
-```javascript
-import a2bt, { toConsole } from "a2bt";
+```typescript
+import a2bt, { toConsole, rootToArray } from "a2bt";
+import type { TreeNode } from "a2bt/dist/rootToArray";
 
-const addend = 0;
+const addend = 1;
 const grid = true;
-const array = ["aaa", "bbb", "ccc"];
+const nodes = ["aaa", "bbb", "ccc"];
+const fgColor = 93;
 
-toConsole(a2bt(array, addend, grid));
+toConsole(a2bt(nodes, addend, grid, fgColor));
+
+//--------------------
+
+const root: TreeNode = {
+  val: 1,
+  left: {
+    val: 2,
+    right: {
+      val: 4,
+    },
+  },
+  right: {
+    val: 3,
+  },
+};
+const array: string[] = [];
+
+// You can use rootToArray to convert an TreeNode root into an array so that it can be used with a2bt.
+rootToArray(array, root);
+
+toConsole(a2bt(array));
 ```
 
 See https://github.com/aprax/a2bt_example for more examples
@@ -131,6 +154,12 @@ $ a2bt ["@","#","$"] -g
 
 Builds to `dist/index.js` for API and `dist/cli.js` for CLI.
 
+```shell
+$ yarn build
 ```
-yarn build
+
+## Run locally
+
+```shell
+$ yarn start [1,2,3]
 ```
