@@ -1,4 +1,4 @@
-export default (array: (Object | null)[]) => {
+export default (array: (Object | null | undefined)[]) => {
   if (array.length <= 1) return true;
 
   for (let x = 1; x < array.length; x++) {
