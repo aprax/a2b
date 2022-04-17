@@ -5,7 +5,7 @@ import getHeight from "../getHeight/index.js";
 export const invalidErrorMessage = "Invalid Binary Tree";
 
 const printNodes: (
-  nodes: (Object | null)[],
+  nodes: (Object | null | undefined)[],
   heightAddend?: number,
   showGrid?: boolean,
   fgColor?: number
