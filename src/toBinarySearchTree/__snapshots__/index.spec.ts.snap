@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot for 1 1`] = `
+Array [
+  "1",
+]
+`;
+
+exports[`should match snapshot for 1,2 1`] = `
+Array [
+  "1",
+  ,
+  "2",
+]
+`;
+
+exports[`should match snapshot for 1,2,3 1`] = `
+Array [
+  "2",
+  "1",
+  "3",
+]
+`;
+
+exports[`should match snapshot for 1,2,3,4 1`] = `
+Array [
+  "2",
+  "1",
+  "3",
+  ,
+  ,
+  ,
+  "4",
+]
+`;
+
+exports[`should match snapshot for 1,2,3,4,5 1`] = `
+Array [
+  "3",
+  "1",
+  "4",
+  ,
+  "2",
+  ,
+  "5",
+]
+`;
+
+exports[`should match snapshot for a,d,z 1`] = `
+Array [
+  "d",
+  "a",
+  "z",
+]
+`;

@@ -1,7 +1,7 @@
 import printNodes, { toConsole, rootToArray } from ".";
 
 it("printNodes should be exported correctly", () => {
-  expect(printNodes([1, 2])).toMatchSnapshot();
+  expect(printNodes({ nodes: [1, 2] })).toMatchSnapshot();
 });
 
 it("toConsole should be exported correct", () => {
