@@ -14,6 +14,7 @@ Options
   --addend, -a Adds the constant to the height of the tree. Useful for when leaf nodes overlap due to long values.
   --grid, -g show number grid instead of whitespace
   --fgColor -f sets the color of the nodes using a ANSI foreground color code (30-37, 90-97) https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+  --bst output as BST
 Example
   $ a2bt [1,2,3, null, 4]
        1        
@@ -29,10 +30,14 @@ Example
 
 const {
   input,
-  flags: { json, addend, grid, fgColor },
+  flags: { json, addend, grid, fgColor, bst },
 } = meow(usage, {
   importMeta: import.meta,
   flags: {
+    bst: {
+      type: "boolean",
+      default: false
+    },
     json: {
       type: "boolean",
       alias: "j",
@@ -59,7 +64,7 @@ if (parsedInput?.length <= 1 ?? true) {
   throw Error("---Array must be greater than a length of 1---");
 }
 
-const output = printNodes(parsedInput, addend, grid, fgColor);
+const output = printNodes({ nodes: parsedInput, heightAddend: addend, showGrid: grid, fgColor: fgColor, bst });
 if (!output) {
   process.exit(1);
 }
