@@ -35,6 +35,7 @@ Use `null` for empty nodes.
   --addend, -a Adds adds an addend to the height of the tree. Useful for when leaf nodes overlap due to long values
   --grid, -g show number grid instead of whitespace
   --fgColor -f A 4bit ANSI color that range from 30-37 and 90-97 inclusive.
+  --bst Output data as Binary Search Tree
 ```
 
 ## API
@@ -148,6 +149,28 @@ $ a2bt ["@","#","$"] -g
 12/4\67
 1/345\7
 #23456$
+```
+
+```
+$ a2bt '["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]' --bst
+                 f
+                / \
+               /   \
+              /     \
+             /       \
+            /         \
+           /           \
+          /             \
+         /               \
+        c                 i
+       / \               / \
+      /   \             /   \
+     /     \           /     \
+    /       \         /       \
+   a         d       g         j
+    \         \       \         \
+     \         \       \         \
+      b         e       h         k
 ```
 
 ## Build
