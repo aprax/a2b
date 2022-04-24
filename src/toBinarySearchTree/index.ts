@@ -1,7 +1,10 @@
 type ToBst = (
-	nodes: Object[], bst: string[], start?: number, end?: number) => void;
+	nodes: Object[],
+	bst: (string | number)[],
+	start?: number,
+	end?: number) => void;
 const toBst: ToBst = (nodes, bst, start = 0, end) => {
-	let mid;
+	let mid: number;
 	if (start === end) {
 		mid = start;
 	} else {
@@ -14,7 +17,12 @@ const toBst: ToBst = (nodes, bst, start = 0, end) => {
 	}
 	let ptr = 0;
 	while (bst[ptr] !== undefined) {
-		if (nodes[mid].toString() > bst[ptr]) {
+		let comparison = nodes[mid].toString() > bst[ptr];
+		if (Number(nodes[mid].toString()) && Number(bst[ptr])) {
+			comparison = Number(nodes[mid].toString()) > Number(bst[ptr]);
+		}
+
+		if (comparison) {
 			ptr = 2 * ptr + 2;
 		} else {
 			ptr = 2 * ptr + 1;
