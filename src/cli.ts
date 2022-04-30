@@ -36,7 +36,7 @@ const {
   flags: {
     bst: {
       type: "boolean",
-      default: false
+      default: false,
     },
     json: {
       type: "boolean",
@@ -64,7 +64,13 @@ if (parsedInput?.length <= 1 ?? true) {
   throw Error("---Array must be greater than a length of 1---");
 }
 
-const output = printNodes({ nodes: parsedInput, heightAddend: addend, showGrid: grid, fgColor: fgColor, bst });
+const output = printNodes({
+  nodes: parsedInput,
+  heightAddend: addend,
+  showGrid: grid,
+  fgColor: fgColor,
+  bst,
+});
 if (!output) {
   process.exit(1);
 }

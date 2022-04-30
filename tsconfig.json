@@ -19,13 +19,12 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
-    //"noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "importsNotUsedAsValues": "error",
     "inlineSourceMap": true,
     "declaration": true,
-    "declarationDir": "./dist",
+    "declarationDir": "./dist"
   },
   "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "dist"]
 }

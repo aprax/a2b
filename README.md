@@ -32,11 +32,32 @@ Use `null` for empty nodes.
 
 ```
   --json, -j  Output tree to JSON string
-  --addend, -a Adds adds an addend to the height of the tree. Useful for when leaf nodes overlap due to long values
+  --addend, -a Increases the height of the tree. Useful when leaf nodes overlap due to long values
   --grid, -g show number grid instead of whitespace
-  --fgColor -f A 4bit ANSI color that range from 30-37 and 90-97 inclusive.
+  --fgColor -f A 4bit ANSI color that ranges from 30-37 and 90-97 inclusive.
   --bst Output data as Binary Search Tree
 ```
+
+The values and their associated color mappings for `--fgColor` are
+
+| Color          | value |
+| -------------- | :---: |
+| Black          |  30   |
+| Red            |  31   |
+| Green          |  32   |
+| Yellow         |  33   |
+| Blue           |  34   |
+| Magenta        |  35   |
+| Cyan           |  36   |
+| White          |  37   |
+| Bright Black   |  90   |
+| Bright Red     |  91   |
+| Bright Green   |  92   |
+| Bright Yellow  |  93   |
+| Bright Blue    |  94   |
+| Bright Magenta |  95   |
+| Bright Cyan    |  96   |
+| Bright White   |  97   |
 
 ## API
 
