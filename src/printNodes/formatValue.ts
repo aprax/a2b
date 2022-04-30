@@ -1,9 +1,9 @@
 /**
  * Color formats a string.
- * 
- * @param {string} character  
+ *
+ * @param {string} character
  * @param {number} ansiColorCode A value between 30-37 and 90-97 inclusive.
- * 
+ *
  * @return {string}
  */
 export default (character: string, ansiColorCode?: number) =>
