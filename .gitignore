@@ -1,6 +1,5 @@
 coverage
 node_modules
-.vscode
 index.js.map
 index.js
 dist
