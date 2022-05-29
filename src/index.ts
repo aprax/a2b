@@ -1,6 +1,6 @@
-import printNodes from "./printNodes/index.js";
-import toConsole from "./toConsole/index.js";
-import rootToArray from "./rootToArray/index.js";
+import printNodes from "./printNodes";
+import type { Args } from "./printNodes";
+import toConsole from "./toConsole";
 
-export default printNodes;
-export { toConsole, rootToArray };
+const a2bt = (args: Args) => toConsole(printNodes(args));
+export default a2bt;
