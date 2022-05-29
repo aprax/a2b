@@ -4,7 +4,6 @@
   "description": "A CLI tool and node library for visualizing binary trees",
   "main": "dist/index.js",
   "bin": "dist/cli.js",
-  "type": "module",
   "scripts": {
     "start": "rm -rf dist && tsc && node dist/cli.js",
     "build": "rm -rf dist && tsc",

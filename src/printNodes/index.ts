@@ -1,11 +1,11 @@
-import isValidBinaryTree from "../isValidBinaryTree/index.js";
-import formatValue from "./formatValue.js";
-import getHeight from "../getHeight/index.js";
-import toBinarySearchTree from "../toBinarySearchTree/index.js";
+import isValidBinaryTree from "../isValidBinaryTree/index";
+import formatValue from "./formatValue";
+import getHeight from "../getHeight/index";
+import toBinarySearchTree from "../toBinarySearchTree/index";
 
 export const invalidErrorMessage = "Invalid Binary Tree";
 
-interface Args {
+export interface Args {
   nodes: (Object | null | undefined)[];
   heightAddend?: number;
   showGrid?: boolean;
@@ -23,12 +23,9 @@ const printNodes: (args: Args) => string[][] = ({
     throw new Error(invalidErrorMessage);
   }
   if (bst) {
-    const bstNodes: string[] = [];
-    const definedNodes: Object[] = (
-      nodes.filter((node) => node) as Object[]
-    ).map((value) => value.toString());
-    toBinarySearchTree(definedNodes, bstNodes);
-    nodes = bstNodes;
+    nodes = toBinarySearchTree(
+      nodes.filter((node) => node).map((val) => val?.toString() ?? "")
+    );
   }
   if (nodes.length <= 1) {
     return [[]];

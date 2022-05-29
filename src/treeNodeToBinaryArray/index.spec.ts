@@ -6,8 +6,7 @@ it("should match [1,2]", () => {
     left: { val: 2 },
   };
 
-  const actual: string[] = [];
-  rootToArray(actual, root);
+  const actual = rootToArray(root);
   expect(actual).toMatchObject(["1", "2"]);
 });
 
@@ -17,8 +16,7 @@ it("should match [1,2,3]", () => {
     left: { val: 2 },
     right: { val: 3 },
   };
-  const actual: string[] = [];
-  rootToArray(actual, root);
+  const actual = rootToArray(root);
   expect(actual).toMatchObject(["1", "2", "3"]);
 });
 
@@ -27,8 +25,7 @@ it("should match [1,undefined,3]", () => {
     val: 1,
     right: { val: 3 },
   };
-  const actual: string[] = [];
-  rootToArray(actual, root);
+  const actual = rootToArray(root);
   expect(actual).toMatchObject(["1", undefined, "3"]);
 });
 
@@ -59,8 +56,7 @@ it("should match [1,undefined,3]", () => {
         },
       },
     };
-    const actual: string[] = [];
-    rootToArray(actual, root);
+    const actual = rootToArray(root);
     expect(actual).toMatchObject(expected);
   });
 })();

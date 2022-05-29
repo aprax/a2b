@@ -13,4 +13,4 @@ const config = {
   extensionsToTreatAsEsm: [".ts"],
 };
 
-export default config;
+module.exports = config;
