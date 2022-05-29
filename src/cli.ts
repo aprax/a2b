@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-console.log("pre start of program");
 import printNodes from "./printNodes/index";
 import toConsole from "./toConsole/index";
 import process from "process";
 
-console.log("Start of program");
 const usage = `
 Usage
   $ a2bt <json_array>
