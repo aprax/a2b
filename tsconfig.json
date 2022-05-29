@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "target": "es2019",
-    "module": "ES2020",
+    //"module": "UMD",
+    "module": "UMD",
+    "target": "ES2015",
     "rootDir": "./src",
     "moduleResolution": "node",
     "outDir": "./dist",

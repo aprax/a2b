@@ -23,12 +23,8 @@ const printNodes: (args: Args) => string[][] = ({
     throw new Error(invalidErrorMessage);
   }
   if (bst) {
-    const bstNodes: string[] = [];
-    const definedNodes: Object[] = (
-      nodes.filter((node) => node) as Object[]
-    ).map((value) => value.toString());
-    toBinarySearchTree(definedNodes, bstNodes);
-    nodes = bstNodes;
+    nodes = toBinarySearchTree( 
+      nodes.filter((node) => node).map((val) => val?.toString() ?? ''));
   }
   if (nodes.length <= 1) {
     return [[]];

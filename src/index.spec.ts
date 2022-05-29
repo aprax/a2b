@@ -11,7 +11,6 @@ it("toConsole should be exported correct", () => {
 });
 
 it("rootToArray should be exported correctly", () => {
-  const actual: string[] = [];
-  rootToArray(actual, { val: 1 });
+  const actual = rootToArray({ val: 1 });
   expect(actual).toMatchObject(["1"]);
 });

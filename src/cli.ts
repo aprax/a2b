@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-/* eslint-disable max-len */
-import meow from "meow";
+console.log('pre start of program')
 import printNodes from "./printNodes/index.js";
 import toConsole from "./toConsole/index.js";
+import process from 'process';
 
+console.log("Start of program");
 const usage = `
 Usage
   $ a2bt <json_array>
@@ -11,9 +12,9 @@ Usage
   Use null for empty nodes, e.g. [1,null,2]
 Options
   --json, -j  Output tree to JSON string
-  --addend, -a Adds the constant to the height of the tree. Useful for when leaf nodes overlap due to long values.
+  --addend, -a Increase the height of each level Useful for overlapping values.
   --grid, -g show number grid instead of whitespace
-  --fgColor -f sets the color of the nodes using a ANSI foreground color code (30-37, 90-97) https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+  --fgColor -f set the node color with an ANSI foreground color (30-37, 90-97)
   --bst output as BST
 Example
   $ a2bt [1,2,3, null, 4]
@@ -27,53 +28,65 @@ Example
     \\           
      4          
 `;
+let json = false;
+let heightAddend = 0;
+let showGrid = false;
+let fgColor = 30
+let bst = false;
+for (let x = 2; x < process.argv.length; x++) {
+  switch(process.argv[x]) {
+    case '-h':
+    case '--help':
+      console.log(usage);
+      break;
+    case '--json':
+    case '-j':
+      json = true;
+      break;
+    case '--addend':
+    case '-a':
+      heightAddend = Number(process.argv[++x]);
+      if (Number.isNaN(heightAddend)) {
+        console.error('addend must be a number')
+        process.exit(1);
+      }
+      break;
+    case '--grid':
+    case '-g':
+      showGrid = true;
+    break;
+    case '--fgColor':
+    case '-f':
+      fgColor = Number(process.argv[++x]);
+      if(Number.isNaN(fgColor)) {
+        console.error('fgColor must be a number');
+        process.exit(1);
+      }
+    break;
+    case '--bst':
+      bst = true; 
+      break;
+    default:
+      console.error(`unknown arg ${process.argv[x]}`);
+      process.exit(1);
+  }
+}
+if  (!process.argv.length) {
+  console.log(usage);
+}
 
-const {
-  input,
-  flags: { json, addend, grid, fgColor, bst },
-} = meow(usage, {
-  importMeta: import.meta,
-  flags: {
-    bst: {
-      type: "boolean",
-      default: false,
-    },
-    json: {
-      type: "boolean",
-      alias: "j",
-    },
-    addend: {
-      type: "number",
-      alias: "a",
-      default: 0,
-    },
-    grid: {
-      type: "boolean",
-      alias: "g",
-      default: false,
-    },
-    fgColor: {
-      type: "number",
-      alias: "f",
-    },
-  },
-});
-
-const parsedInput: string[] = JSON.parse(input[0] || "[]");
-if (parsedInput?.length <= 1 ?? true) {
+const nodes: string[] = JSON.parse(process.argv.at(-1) || "[]");
+if (nodes?.length <= 1 ?? true) {
   throw Error("---Array must be greater than a length of 1---");
 }
 
 const output = printNodes({
-  nodes: parsedInput,
-  heightAddend: addend,
-  showGrid: grid,
-  fgColor: fgColor,
+  nodes,
+  heightAddend,
+  showGrid,
+  fgColor,
   bst,
 });
-if (!output) {
-  process.exit(1);
-}
 
 if (json) {
   process.stdout.write(JSON.stringify(output));
