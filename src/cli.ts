@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-import printNodes from "./printNodes/index";
-import toConsole from "./toConsole/index";
+import printNodes from "./printNodes";
+import toConsole from "./toConsole";
 import process from "process";
+import defaultArgs from './defaultArgs';
 
-const usage = `
+export default (() => {
+  const usage = `
 Usage
   $ a2bt <json_array>
 
@@ -26,69 +28,75 @@ Example
     \\           
      4          
 `;
-let json = false;
-let heightAddend = 0;
-let showGrid = false;
-let fgColor = 30;
-let bst = false;
-for (let x = 2; x < process.argv.length; x++) {
-  switch (process.argv[x]) {
-    case "-h":
-    case "--help":
-      console.log(usage);
-      break;
-    case "--json":
-    case "-j":
-      json = true;
-      break;
-    case "--addend":
-    case "-a":
-      heightAddend = Number(process.argv[++x]);
-      if (Number.isNaN(heightAddend)) {
-        console.error("addend must be a number");
-        process.exit(1);
-      }
-      break;
-    case "--grid":
-    case "-g":
-      showGrid = true;
-      break;
-    case "--fgColor":
-    case "-f":
-      fgColor = Number(process.argv[++x]);
-      if (Number.isNaN(fgColor)) {
-        console.error("fgColor must be a number");
-        process.exit(1);
-      }
-      break;
-    case "--bst":
-      bst = true;
-      break;
-    default:
-      console.error(`unknown arg ${process.argv[x]}`);
-      process.exit(1);
+
+  let nodes = [];
+
+  const args = { ...defaultArgs };
+  if (!process.argv[2]) {
+    console.log(usage);
+    process.exit(1);
   }
-}
-if (!process.argv.length) {
-  console.log(usage);
-}
+  for (let x = 2; x < process.argv.length; x++) {
+    const param = process.argv[x];
+    if (param[0] !== '-') {
+      try {
+        nodes = JSON.parse(process.argv[x]);
+      } catch (error) {
+        console.error(error);
+        process.exit(1);
+      }
+      break;
+    }
+    switch (param) {
+      case "-h":
+      case "--help":
+        console.log(usage);
+        break;
+      case "--json":
+      case "-j":
+        args.json = true;
+        break;
+      case "--addend":
+      case "-a":
+        args.heightAddend = Number(process.argv[++x]);
+        if (Number.isNaN(args.heightAddend)) {
+          console.error("addend must be a number");
+          process.exit(1);
+        }
+        break;
+      case "--grid":
+      case "-g":
+        args.showGrid = true;
+        break;
+      case "--fgColor":
+      case "-f":
+        args.fgColor = Number(process.argv[++x]);
+        if (Number.isNaN(args.fgColor)) {
+          console.error("fgColor must be a number");
+          process.exit(1);
+        }
+        break;
+      case "--bst":
+        args.bst = true;
+        break;
+      default:
+        console.error(`unknown arg ${process.argv[x]}`);
+        process.exit(1);
+    }
+  }
 
-const nodes: string[] = JSON.parse(process.argv.at(-1) || "[]");
-if (nodes?.length <= 1 ?? true) {
-  throw Error("---Array must be greater than a length of 1---");
-}
 
-const output = printNodes({
-  nodes,
-  heightAddend,
-  showGrid,
-  fgColor,
-  bst,
-});
+  if (nodes?.length <= 1 ?? true) {
+    console.error("---Array must be greater than a length of 1---");
+    process.exit(1);
+  }
 
-if (json) {
-  process.stdout.write(JSON.stringify(output));
-} else {
-  toConsole(output);
-}
-process.exit(0);
+  const output = printNodes({ nodes, ...args });
+
+  if (args.json) {
+    process.stdout.write(JSON.stringify(output));
+  } else {
+    toConsole(output);
+  }
+  process.exit(0);
+})()
