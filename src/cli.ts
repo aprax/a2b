@@ -2,7 +2,7 @@
 import printNodes from "./printNodes";
 import toConsole from "./toConsole";
 import process from "process";
-import defaultArgs from './defaultArgs';
+import defaultArgs from "./defaultArgs";
 
 export default (() => {
   const usage = `
@@ -38,7 +38,7 @@ Example
   }
   for (let x = 2; x < process.argv.length; x++) {
     const param = process.argv[x];
-    if (param[0] !== '-') {
+    if (param[0] !== "-") {
       try {
         nodes = JSON.parse(process.argv[x]);
       } catch (error) {
@@ -85,7 +85,6 @@ Example
     }
   }
 
-
   if (nodes?.length <= 1 ?? true) {
     console.error("---Array must be greater than a length of 1---");
     process.exit(1);
@@ -99,4 +98,4 @@ Example
     toConsole(output);
   }
   process.exit(0);
-})()
+})();

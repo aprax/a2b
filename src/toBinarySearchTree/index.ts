@@ -45,6 +45,11 @@ const toBst: ToBst = (nodes, bst, start = 0, end) => {
     toBst(nodes, bst, mid + 1, end);
   }
 };
+/**
+ * Reorder an array of binary tree nodes to a binary search tree.
+ * @param {object[]} nodes A boinary array of nodes
+ * @return {object[]}
+ */
 const toBinarySearchTree = (nodes: Object[]) => {
   const bst: (string | number)[] = [];
   toBst(nodes, bst);
