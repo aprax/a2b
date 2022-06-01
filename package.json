@@ -31,6 +31,7 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "meow": "^10.1.2"
+    "meow": "^10.1.2",
+    "src": "^1.1.2"
   }
 }

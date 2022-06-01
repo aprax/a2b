@@ -5,20 +5,25 @@ import toBinarySearchTree from "../toBinarySearchTree/index";
 
 export const invalidErrorMessage = "Invalid Binary Tree";
 
+export type Node = Object | null | undefined;
 export interface Args {
-  nodes: (Object | null | undefined)[];
   heightAddend?: number;
   showGrid?: boolean;
   fgColor?: number | undefined;
   bst?: boolean;
 }
-const printNodes: (args: Args) => string[][] = ({
+const printNodes: (nodes: Node[], args?: Args) => string[][] = (
   nodes,
-  heightAddend = 0,
-  showGrid = false,
-  fgColor = undefined,
-  bst = false,
-}) => {
+  args
+) => {
+  const defaults = {
+    heightAddend: 0,
+    showGrid: false,
+    fgColor: undefined,
+    bst: false,
+  };
+  args = { ...defaults, ...args };
+  const { heightAddend, showGrid, fgColor, bst } = args;
   if (!isValidBinaryTree(nodes)) {
     throw new Error(invalidErrorMessage);
   }
@@ -37,7 +42,7 @@ const printNodes: (args: Args) => string[][] = ({
     cellLength++;
   }
 
-  let height = Math.floor(Math.log2(nodes.length)) + heightAddend;
+  let height = Math.floor(Math.log2(nodes.length)) + (heightAddend ?? 0);
 
   let branchCount = Math.pow(2, height);
 

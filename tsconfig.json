@@ -22,9 +22,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "importsNotUsedAsValues": "error",
-    "inlineSourceMap": true,
     "declaration": true,
-    "declarationDir": "./dist"
+    "declarationDir": "./dist",
+    "sourceMap": true
   },
   "exclude": ["node_modules", "jest.config.ts", "**/*.spec.ts", "dist"]
 }

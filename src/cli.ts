@@ -90,7 +90,7 @@ Example
     process.exit(1);
   }
 
-  const output = printNodes({ nodes, ...args });
+  const output = printNodes(nodes, { ...args });
 
   if (args.json) {
     process.stdout.write(JSON.stringify(output));

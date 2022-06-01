@@ -1,4 +1,6 @@
-import rootToArray, { TreeNode } from ".";
+import type { TreeNode } from ".";
+import treeNodeToBinaryArray from ".";
+import isValidBinaryTree from "../isValidBinaryTree";
 
 it("should match [1,2]", () => {
   const root: TreeNode = {
@@ -6,7 +8,8 @@ it("should match [1,2]", () => {
     left: { val: 2 },
   };
 
-  const actual = rootToArray(root);
+  const actual = treeNodeToBinaryArray(root);
+  expect(isValidBinaryTree(actual)).toBeTruthy();
   expect(actual).toMatchObject(["1", "2"]);
 });
 
@@ -16,7 +19,8 @@ it("should match [1,2,3]", () => {
     left: { val: 2 },
     right: { val: 3 },
   };
-  const actual = rootToArray(root);
+  const actual = treeNodeToBinaryArray(root);
+  expect(isValidBinaryTree(actual)).toBeTruthy();
   expect(actual).toMatchObject(["1", "2", "3"]);
 });
 
@@ -25,38 +29,41 @@ it("should match [1,undefined,3]", () => {
     val: 1,
     right: { val: 3 },
   };
-  const actual = rootToArray(root);
+  const actual = treeNodeToBinaryArray(root);
+  expect(isValidBinaryTree(actual)).toBeTruthy();
   expect(actual).toMatchObject(["1", undefined, "3"]);
 });
 
 (() => {
-  const expected = [
-    "1",
-    "2",
-    undefined,
-    undefined,
-    "5",
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    "11",
-  ];
-  it(`should match ${expected}`, () => {
-    const root: TreeNode = {
-      val: 1,
-      left: {
-        val: 2,
+  const root: TreeNode = {
+    val: 1,
+    left: {
+      val: 2,
+      right: {
+        val: 5,
         right: {
-          val: 5,
-          right: {
-            val: 11,
-          },
+          val: 11,
         },
       },
-    };
-    const actual = rootToArray(root);
-    expect(actual).toMatchObject(expected);
+    },
+  };
+  it(`should match snapshot for ${JSON.stringify(root)}`, () => {
+    const actual = treeNodeToBinaryArray(root);
+    expect(isValidBinaryTree(actual)).toBeTruthy();
+    expect(actual).toMatchSnapshot();
+  });
+})();
+
+(() => {
+  const root = {
+    val: 3,
+    left: null,
+    right: { val: 9, left: null, right: null },
+  };
+
+  it(`should match snapshot for ${JSON.stringify(root)}`, () => {
+    const actual = treeNodeToBinaryArray(root);
+    expect(isValidBinaryTree(actual)).toBeTruthy();
+    expect(actual).toMatchSnapshot();
   });
 })();

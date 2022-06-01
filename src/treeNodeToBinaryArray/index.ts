@@ -1,7 +1,7 @@
 export interface TreeNode {
   val: Object;
-  left?: TreeNode | undefined;
-  right?: TreeNode | undefined;
+  left?: TreeNode | undefined | null;
+  right?: TreeNode | undefined | null;
 }
 
 /**

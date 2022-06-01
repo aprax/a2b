@@ -20,9 +20,8 @@ describe("on valid input", () => {
   it("should exit with 0", () => {
     process.argv = [...args, nodes];
     expect(() => require("./cli")).toThrow(exitMessage);
-    expect(printNodes).toHaveBeenCalledWith({
+    expect(printNodes).toHaveBeenCalledWith(JSON.parse(nodes), {
       ...defaultArgs,
-      nodes: JSON.parse(nodes),
     });
     expect(toConsole).toHaveBeenCalled();
     expect(process.exit).toHaveBeenCalledWith(0);
@@ -66,10 +65,9 @@ describe("on valid input", () => {
     });
     afterEach(() => {
       expect(() => require("./cli")).toThrow(exitMessage);
-      expect(printNodes).toHaveBeenCalledWith({
+      expect(printNodes).toHaveBeenCalledWith(JSON.parse(nodes), {
         ...defaultArgs,
         heightAddend: 5,
-        nodes: JSON.parse(nodes),
       });
 
       expect(process.exit).toHaveBeenCalledWith(0);

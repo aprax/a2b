@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot for {"val":1,"left":{"val":2,"right":{"val":5,"right":{"val":11}}}} 1`] = `
+Array [
+  "1",
+  "2",
+  ,
+  ,
+  "5",
+  ,
+  ,
+  ,
+  ,
+  ,
+  "11",
+]
+`;
+
+exports[`should match snapshot for {"val":3,"left":null,"right":{"val":9,"left":null,"right":null}} 1`] = `
+Array [
+  "3",
+  ,
+  "9",
+]
+`;
