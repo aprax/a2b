@@ -32,8 +32,11 @@ const printNodes: (nodes: Node[], args?: Args) => string[][] = (
       nodes.filter((node) => node).map((val) => val?.toString() ?? "")
     );
   }
-  if (nodes.length <= 1) {
-    return [[]];
+  if (nodes.length === 1) {
+    return [[nodes[0]?.toString() ?? "null"]];
+  }
+  if (nodes.length === 0) {
+    return [];
   }
   let cellLength = Math.max(
     ...nodes.map((node) => (node ? node.toString().length : 0))
