@@ -1,17 +1,10 @@
-import printNodes, { toConsole, rootToArray } from ".";
+import a2bt from ".";
+import type { Node } from "./printNodes";
 
-it("printNodes should be exported correctly", () => {
-  expect(printNodes({ nodes: [1, 2] })).toMatchSnapshot();
-});
+it("a2bt should be exported", () => {
+  const nodes: Node[] = [1, 2, 3];
+  jest.spyOn(console, "log").mockImplementation();
 
-it("toConsole should be exported correct", () => {
-  jest.spyOn(console, "log");
-  toConsole([["a"]]);
+  a2bt(nodes);
   expect(console.log).toHaveBeenCalled();
-});
-
-it("rootToArray should be exported correctly", () => {
-  const actual: string[] = [];
-  rootToArray(actual, { val: 1 });
-  expect(actual).toMatchObject(["1"]);
 });

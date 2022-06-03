@@ -4,6 +4,14 @@ type ToBst = (
   start?: number,
   end?: number
 ) => void;
+
+/**
+ * Converts a binary tree to a binary search tree
+ * @param {object[]} nodes A binary array of nodes
+ * @param {(string | number)[]} bst  The output bst array
+ * @param {number} [start=0]
+ * @param {number} end
+ */
 const toBst: ToBst = (nodes, bst, start = 0, end) => {
   let mid: number;
   if (start === end) {
@@ -37,4 +45,14 @@ const toBst: ToBst = (nodes, bst, start = 0, end) => {
     toBst(nodes, bst, mid + 1, end);
   }
 };
-export default toBst;
+/**
+ * Reorder an array of binary tree nodes to a binary search tree.
+ * @param {object[]} nodes A boinary array of nodes
+ * @return {object[]}
+ */
+const toBinarySearchTree = (nodes: Object[]) => {
+  const bst: (string | number)[] = [];
+  toBst(nodes, bst);
+  return bst;
+};
+export default toBinarySearchTree;

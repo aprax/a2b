@@ -1,4 +1,9 @@
-export default (array: (Object | null | undefined)[]) => {
+/**
+ * Validates if the array is a valid binary tree.
+ * @param {unknown[]} array
+ * @return {boolean}
+ */
+export default (array: unknown[]) => {
   if (array.length <= 1) return true;
 
   for (let x = 1; x < array.length; x++) {

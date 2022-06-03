@@ -1,10 +1,9 @@
 {
   "name": "a2bt",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A CLI tool and node library for visualizing binary trees",
   "main": "dist/index.js",
   "bin": "dist/cli.js",
-  "type": "module",
   "scripts": {
     "start": "rm -rf dist && tsc && node dist/cli.js",
     "build": "rm -rf dist && tsc",
@@ -19,7 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.21",
+    "@types/node": "^17.0.36",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",
@@ -32,6 +31,7 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "meow": "^10.1.2"
+    "meow": "^10.1.2",
+    "src": "^1.1.2"
   }
 }

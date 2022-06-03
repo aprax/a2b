@@ -12,6 +12,6 @@ const snapshots = [
 
 for (const snapshot of snapshots) {
   it(`${message} ${JSON.stringify(snapshot)}`, () => {
-    expect(printNodes({ nodes: snapshot })).toMatchSnapshot();
+    expect(printNodes(snapshot)).toMatchSnapshot();
   });
 }

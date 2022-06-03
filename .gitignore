@@ -5,3 +5,4 @@ index.js
 dist
 .DS_store
 .swp
+yarn-error.log

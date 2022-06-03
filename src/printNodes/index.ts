@@ -1,37 +1,42 @@
-import isValidBinaryTree from "../isValidBinaryTree/index.js";
-import formatValue from "./formatValue.js";
-import getHeight from "../getHeight/index.js";
-import toBinarySearchTree from "../toBinarySearchTree/index.js";
+import isValidBinaryTree from "../isValidBinaryTree/index";
+import formatValue from "./formatValue";
+import getHeight from "../getHeight/index";
+import toBinarySearchTree from "../toBinarySearchTree/index";
 
 export const invalidErrorMessage = "Invalid Binary Tree";
 
-interface Args {
-  nodes: (Object | null | undefined)[];
+export type Node = Object | null | undefined;
+export interface Args {
   heightAddend?: number;
   showGrid?: boolean;
   fgColor?: number | undefined;
   bst?: boolean;
 }
-const printNodes: (args: Args) => string[][] = ({
+const printNodes: (nodes: Node[], args?: Args) => string[][] = (
   nodes,
-  heightAddend = 0,
-  showGrid = false,
-  fgColor = undefined,
-  bst = false,
-}) => {
+  args
+) => {
+  const defaults = {
+    heightAddend: 0,
+    showGrid: false,
+    fgColor: undefined,
+    bst: false,
+  };
+  args = { ...defaults, ...args };
+  const { heightAddend, showGrid, fgColor, bst } = args;
   if (!isValidBinaryTree(nodes)) {
     throw new Error(invalidErrorMessage);
   }
   if (bst) {
-    const bstNodes: string[] = [];
-    const definedNodes: Object[] = (
-      nodes.filter((node) => node) as Object[]
-    ).map((value) => value.toString());
-    toBinarySearchTree(definedNodes, bstNodes);
-    nodes = bstNodes;
+    nodes = toBinarySearchTree(
+      nodes.filter((node) => node).map((val) => val?.toString() ?? "")
+    );
   }
-  if (nodes.length <= 1) {
-    return [[]];
+  if (nodes.length === 1) {
+    return [[nodes[0]?.toString() ?? "null"]];
+  }
+  if (nodes.length === 0) {
+    return [];
   }
   let cellLength = Math.max(
     ...nodes.map((node) => (node ? node.toString().length : 0))
@@ -40,7 +45,7 @@ const printNodes: (args: Args) => string[][] = ({
     cellLength++;
   }
 
-  let height = Math.floor(Math.log2(nodes.length)) + heightAddend;
+  let height = Math.floor(Math.log2(nodes.length)) + (heightAddend ?? 0);
 
   let branchCount = Math.pow(2, height);
 
