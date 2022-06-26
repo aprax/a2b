@@ -1,9 +1,10 @@
 {
   "name": "a2bt",
-  "version": "3.0.0",
+  "version": "3.0.1-0",
   "description": "A CLI tool and node library for visualizing binary trees",
   "main": "dist/index.js",
   "bin": "dist/cli.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "rm -rf dist && tsc && node dist/cli.js",
     "build": "rm -rf dist && tsc",
@@ -30,8 +31,5 @@
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
   },
-  "dependencies": {
-    "meow": "^10.1.2",
-    "src": "^1.1.2"
-  }
+  "dependencies": {}
 }
