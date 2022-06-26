@@ -26,5 +26,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: yarn
       - run: yarn lerna bootstrap
-      - run: yarn lerna run build
+      - run: yarn lerna run lint
       - run: yarn lerna run test
+      - run: yarn lerna run build

@@ -6,10 +6,11 @@
   "bin": "dist/cli.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "rm -rf dist && tsc && node dist/cli.js",
-    "build": "rm -rf dist && tsc",
-    "lint": "yarn prettier --write . && yarn eslint src --fix",
-    "test": "yarn jest --coverage"
+    "start": "node dist/cli.js",
+    "build": "tsc",
+    "lint": "yarn prettier --check . && yarn eslint src/",
+    "test": "yarn jest --coverage",
+    "fix": "yarn prettier --write . && yarn eslint src/ --fix"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,6 @@
   "author": "Adam Prax",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.36",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",
