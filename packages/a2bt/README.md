@@ -5,7 +5,7 @@ Prints an ASCII representation of a binary tree.
 ## Install
 
 ```
-npm install a2bt
+npm install --save a2bt
 ```
 
 or
@@ -18,6 +18,12 @@ yarn add a2bt
 
 ```
 npm install -g a2bt
+```
+
+or
+
+```
+yarn global add a2bt
 ```
 
 ## CLI

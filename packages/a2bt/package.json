@@ -1,0 +1,33 @@
+{
+  "name": "a2bt",
+  "version": "3.0.1",
+  "description": "A CLI tool and node library for visualizing binary trees",
+  "main": "dist/index.js",
+  "bin": "dist/cli.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "node dist/cli.js",
+    "build": "tsc",
+    "lint": "yarn prettier --check . && yarn eslint src/",
+    "test": "yarn jest --coverage",
+    "fix": "yarn prettier --write . && yarn eslint src/ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aprax/a2b.git"
+  },
+  "author": "Adam Prax",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.1.3",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.1",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
+  }
+}
