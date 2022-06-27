@@ -100,7 +100,7 @@ rootToArray(array, root);
 toConsole(a2bt(array));
 ```
 
-See https://github.com/aprax/a2bt_example for more examples
+See https://github.com/aprax/a2bt/tree/master/packages/a2bt_example for more examples.
 
 ## Examples
 
@@ -202,14 +202,26 @@ $ a2bt '["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]' --bst
 
 ## Build
 
-Builds to `dist/index.js` for API and `dist/cli.js` for CLI.
+Enable git hooks for local development.
 
 ```shell
-$ yarn build
+$ yarn hooks
 ```
 
-## Run locally
+Builds _a2bt_ API to `packages/a2bt/dist/index.js` and CLI to `packages/a2bt/dist/cli.js` and _a2bt_example_ to `packages/a2bt_example/dist/index.js`.
 
 ```shell
-$ yarn start [1,2,3]
+$ yarn lerna run build
+```
+
+## Run a2bt locally
+
+```shell
+$ yarn --cwd=packages/a2bt start [1,2,3]
+```
+
+## Run example app locally.
+
+```shell
+$ yarn --cwd=packages/a2bt_example start
 ```
