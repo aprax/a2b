@@ -1,0 +1,3 @@
+#!/bin/sh
+
+yarn lerna run lint && yarn lerna run test && && yarn lerna run build
