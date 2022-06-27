@@ -202,10 +202,10 @@ $ a2bt '["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]' --bst
 
 ## Build
 
-Builds to `dist/index.js` for API and `dist/cli.js` for CLI.
+Builds to `packages/a2bt/dist/index.js` for API and `packages/a2bt/dist/cli.js` for CLI.
 
 ```shell
-$ yarn build
+$ yarn lerna run build
 ```
 
 ## Run locally
