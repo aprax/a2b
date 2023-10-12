@@ -1,3 +1,6 @@
+/**
+ * @module @a2b/toBinarySearchTree
+ */
 type ToBst = (
   nodes: Object[],
   bst: (string | number)[],
@@ -7,10 +10,10 @@ type ToBst = (
 
 /**
  * Converts a binary tree to a binary search tree
- * @param {object[]} nodes A binary array of nodes
- * @param {(string | number)[]} bst  The output bst array
- * @param {number} [start=0]
- * @param {number} end
+ * @param nodes The input binary tree array
+ * @param bst The output binary search tree array
+ * @param The start index
+ * @param end The end index
  */
 const toBst: ToBst = (nodes, bst, start = 0, end) => {
   let mid: number;
@@ -47,8 +50,8 @@ const toBst: ToBst = (nodes, bst, start = 0, end) => {
 };
 /**
  * Reorder an array of binary tree nodes to a binary search tree.
- * @param {object[]} nodes A boinary array of nodes
- * @return {object[]}
+ * @param nodes The input binary tree array
+ * @return The output binary search tree array
  */
 const toBinarySearchTree = (nodes: Object[]) => {
   const bst: (string | number)[] = [];

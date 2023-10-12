@@ -1,7 +1,8 @@
 /**
- * Validates if the array is a valid binary tree.
- * @param {unknown[]} array
- * @return {boolean}
+ * @module a2bt/isValidBinaryTree
+ * Checks if an array is a valid binary tree
+ * @param array The array to be validated
+ * @return Whether or not the array is a valid binary tree
  */
 export default (array: unknown[]) => {
   if (array.length <= 1) return true;

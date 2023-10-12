@@ -6,12 +6,25 @@ import toBinarySearchTree from "../toBinarySearchTree/index";
 export const invalidErrorMessage = "Invalid Binary Tree";
 
 export type Node = Object | null | undefined;
+/*
+ * ‘bst’ option converts the binary tree to a binary search tree
+ * ‘heightAddend’ option adds to the height of the binary tree
+ * ‘showGrid’ option shows an ANSI background
+ * ‘fgColor’ option sets the foreground color of the binary tree
+ */
 export interface Args {
   heightAddend?: number;
   showGrid?: boolean;
   fgColor?: number | undefined;
   bst?: boolean;
 }
+/**
+ * Prints a binary tree to the console
+ * @description Prints a binary tree to the console
+ * @param nodes The array of nodes to be printed as a binary tree
+ * @param args The optional arguments to be passed to printNodes
+ * @return The output of printNodes to the console
+ */
 const printNodes: (nodes: Node[], args?: Args) => string[][] = (
   nodes,
   args
