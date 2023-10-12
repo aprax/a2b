@@ -4,10 +4,24 @@ import toConsole from "./toConsole";
 import process from "process";
 import defaultArgs from "./defaultArgs";
 
+/**
+ * @module @a2b/cli
+ * @description  Prints a binary tree to the console
+ * @example
+ * a2bt [1,2,3, null, 4]
+ *    1
+ *   / \
+ *  /   \
+ * /     \
+ * 2     3
+ *  \
+ *   \
+ *    4
+ */
 export default (() => {
   const usage = `
 Usage
-  $ a2bt <json_array>
+  $ a2bt '<json_array_of_level_order_nodes>'
 
   Use null for empty nodes, e.g. [1,null,2]
 Options

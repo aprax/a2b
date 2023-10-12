@@ -1,3 +1,13 @@
+/**
+ * Gets the height of a binary tree array
+ *
+ * @param index The index of the node to get the height of
+ * @param branchCount The number of branches in the binary tree array
+ * @param nodes The binary tree array
+ * @param side The side of the tree to get the height of
+ *
+ * @return The height of the node
+ */
 export default (
   index: number,
   branchCount: number,

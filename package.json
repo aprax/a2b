@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "hooks": "cp hooks/* .git/hooks/"
+    "hooks": "cp hooks/* .git/hooks/",
+    "build": "yarn --cwd packages/a2bt_example && yarn --cwd packages/a2bt && yarn lerna run build"
   },
   "devDependencies": {
     "@types/jest": "^28.1.3",

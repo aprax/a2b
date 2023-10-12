@@ -1,10 +1,10 @@
 /**
- * Color formats a string.
+ * Color formats a string using ANSI escape codes.
  *
- * @param {string} character
- * @param {number} ansiColorCode A value between 30-37 and 90-97 inclusive.
+ * @param character The string to be color formatted.
+ * @param ansiColorCode A value between 30-37 and 90-97 inclusive. See https://en.wikipedia.org/wiki/ANSI_escape_code#Colors.
  *
- * @return {string}
+ * @return The color formatted string.
  */
 export default (character: string, ansiColorCode?: number) =>
   ansiColorCode

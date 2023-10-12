@@ -67,40 +67,7 @@ The values and their associated color mappings for `--fgColor` are
 
 ## API
 
-```typescript
-import a2bt, { toConsole, rootToArray } from "a2bt";
-import type { TreeNode } from "a2bt/dist/rootToArray";
-
-const addend = 1;
-const grid = true;
-const nodes = ["aaa", "bbb", "ccc"];
-const fgColor = 93;
-
-toConsole(a2bt(nodes, addend, grid, fgColor));
-
-//--------------------
-
-const root: TreeNode = {
-  val: 1,
-  left: {
-    val: 2,
-    right: {
-      val: 4,
-    },
-  },
-  right: {
-    val: 3,
-  },
-};
-const array: string[] = [];
-
-// You can use rootToArray to convert an TreeNode root into an array so that it can be used with a2bt.
-rootToArray(array, root);
-
-toConsole(a2bt(array));
-```
-
-See https://github.com/aprax/a2bt/tree/master/packages/a2bt_example for more examples.
+See https://github.com/aprax/a2bt/tree/master/packages/a2bt_example/src/index.ts.
 
 ## Examples
 
@@ -211,7 +178,7 @@ $ yarn hooks
 Builds _a2bt_ library to `packages/a2bt/dist/index.js` and command line tool to `packages/a2bt/dist/cli.js` and _a2bt_example_ to `packages/a2bt_example/dist/index.js`.
 
 ```shell
-$ yarn lerna run build
+$ yarn run build
 ```
 
 ## Run local
