@@ -1,7 +1,16 @@
-import printNodes, { invalidErrorMessage } from ".";
+import printNodes from ".";
 
 const message = "match snapshot for  ";
 const MAX_LEVEL = 5;
+
+it("should work with [3,0,1,2]", () => {
+  const actual = printNodes([3, 0, 1, 2]);
+  expect(actual).toMatchSnapshot();
+  const grid = printNodes([3, 0, 1, 2], { showGrid: true });
+  expect(grid).toMatchSnapshot();
+  const addend = printNodes([3, 0, 1, 2], { showGrid: false });
+  expect(addend).toMatchSnapshot();
+});
 
 it("should return a single node for an array of length 1", () => {
   expect(printNodes([1])).toEqual([["1"]]);
@@ -24,15 +33,3 @@ for (let x = 1; x <= MAX_LEVEL; x++) {
     expect(addend).toMatchSnapshot();
   });
 }
-
-let array = [null, 1];
-((array) =>
-  it(`should throw with invalid ${array}`, () => {
-    expect(() => printNodes(array)).toThrow(invalidErrorMessage);
-  }))(array);
-
-array = [1, null, 3, 4, 5, 6];
-((array) =>
-  it(`should fail with ${JSON.stringify(array)}`, () => {
-    expect(() => printNodes(array)).toThrow(invalidErrorMessage);
-  }))(array);

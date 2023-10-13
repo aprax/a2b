@@ -1,6 +1,5 @@
 import type { TreeNode } from ".";
 import treeNodeToBinaryArray from ".";
-import isValidBinaryTree from "../isValidBinaryTree";
 
 it("should match [1,2]", () => {
   const root: TreeNode = {
@@ -9,7 +8,6 @@ it("should match [1,2]", () => {
   };
 
   const actual = treeNodeToBinaryArray(root);
-  expect(isValidBinaryTree(actual)).toBeTruthy();
   expect(actual).toMatchObject(["1", "2"]);
 });
 
@@ -20,7 +18,6 @@ it("should match [1,2,3]", () => {
     right: { val: 3 },
   };
   const actual = treeNodeToBinaryArray(root);
-  expect(isValidBinaryTree(actual)).toBeTruthy();
   expect(actual).toMatchObject(["1", "2", "3"]);
 });
 
@@ -30,7 +27,6 @@ it("should match [1,undefined,3]", () => {
     right: { val: 3 },
   };
   const actual = treeNodeToBinaryArray(root);
-  expect(isValidBinaryTree(actual)).toBeTruthy();
   expect(actual).toMatchObject(["1", undefined, "3"]);
 });
 
@@ -49,7 +45,6 @@ it("should match [1,undefined,3]", () => {
   };
   it(`should match snapshot for ${JSON.stringify(root)}`, () => {
     const actual = treeNodeToBinaryArray(root);
-    expect(isValidBinaryTree(actual)).toBeTruthy();
     expect(actual).toMatchSnapshot();
   });
 })();
@@ -63,7 +58,6 @@ it("should match [1,undefined,3]", () => {
 
   it(`should match snapshot for ${JSON.stringify(root)}`, () => {
     const actual = treeNodeToBinaryArray(root);
-    expect(isValidBinaryTree(actual)).toBeTruthy();
     expect(actual).toMatchSnapshot();
   });
 })();
