@@ -1,4 +1,3 @@
-import isValidBinaryTree from "../isValidBinaryTree/index";
 import formatValue from "./formatValue";
 import getHeight from "../getHeight/index";
 import toBinarySearchTree from "../toBinarySearchTree/index";
@@ -19,7 +18,7 @@ export interface Args {
   bst?: boolean;
 }
 /**
- * Prints a binary tree to the console
+ * Creates a two dimensional array of a binary tree for logging to the console
  * @description Prints a binary tree to the console
  * @param nodes The array of nodes to be printed as a binary tree
  * @param args The optional arguments to be passed to printNodes
@@ -37,9 +36,6 @@ const printNodes: (nodes: Node[], args?: Args) => string[][] = (
   };
   args = { ...defaults, ...args };
   const { heightAddend, showGrid, fgColor, bst } = args;
-  if (!isValidBinaryTree(nodes)) {
-    throw new Error(invalidErrorMessage);
-  }
   if (bst) {
     nodes = toBinarySearchTree(
       nodes.filter((node) => node).map((val) => val?.toString() ?? "")
