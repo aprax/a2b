@@ -1,6 +1,6 @@
 {
   "name": "a2bt_example",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Example using a2bt in a module.",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "Adam Prax",
   "license": "ISC",
   "dependencies": {
-    "a2bt": "^3.1.1"
+    "a2bt": "^3.1.2"
   },
   "devDependencies": {
     "@types/jest": "^28.1.0",
